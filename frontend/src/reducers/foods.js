@@ -1,27 +1,26 @@
-
 import { REQUEST_STATE } from '../constants'
 
 export const initialState = {
   fetchState: REQUEST_STATE.INITIAL,
-  restaurantsList: [],
+  foodsList: [],
 }
 
-export const restaurantsActionTypes = {
+export const foodsActionTypes = {
   FETCHING: 'FETCHING',
   FETCH_SUCCESS: 'FETCH_SUCCESS'
 }
 
-export const restaurantsReducer = (state, action) => {
+export const foodsReducer = (state, action) => {
   switch (action.type) {
-    case restaurantsActionTypes.FETCHING:
+    case foodsActionTypes.FETCHING:
       return {
         ...state,
         fetchState: REQUEST_STATE.LOADING,
       }
-    case restaurantsActionTypes.FETCH_SUCCESS:
+    case foodsActionTypes.FETCH_SUCCESS:
       return {
         fetchState: REQUEST_STATE.OK,
-        restaurantsList: action.payload.restaurants,
+        foodsList: action.payload.foods,
       }
     default:
       throw new Error()
